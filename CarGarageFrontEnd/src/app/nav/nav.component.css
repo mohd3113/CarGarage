@@ -1,0 +1,50 @@
+.nav-item {
+  cursor: pointer;
+  border-color: #000b2b !important;
+}
+
+.navbar-toggler {
+  z-index: 99;
+}
+
+.navbar-brand {
+  max-height: 50px;
+  max-width: 50px;
+  padding: 0 !important;
+}
+
+.nav-image {
+  height: 50px;
+}
+
+.userImage {
+  max-height: 50px;
+  border: 2px solid white;
+  display: inline;
+}
+
+.i-nav {
+  margin-left: 0px !important;
+}
+
+a {
+  cursor: pointer;
+}
+
+.navbar-light .navbar-toggler {
+  color: #00ff9d;
+}
+.navbar-nav {
+  background-color: #000b2b;
+}
+
+.navbar-light .navbar-nav .nav-link:focus {
+  color: #00ff9d;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #db5c6f;
+}
+
+.dropdown-menu .show{
+  transform:translate3d(-50%, 0, 0) !important;
+}

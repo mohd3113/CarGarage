@@ -1,0 +1,9 @@
+.center {
+  margin: auto;
+  max-width: 800px;
+  padding: 10px;
+}
+
+.text-primary {
+  color: #00ff9d !important;
+}
