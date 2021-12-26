@@ -26,7 +26,7 @@ namespace CarGarageBackEnd.Data
             return await _context.Vehicles.FirstOrDefaultAsync(p => p.VehicleId == id);
         }
 
-        public async Task<PagedList<Vehicle>> GetCars(CarParams carParams)
+        public  PagedList<Vehicle> GetCars(CarParams carParams)
         {
             var cars = _context.Vehicles.AsQueryable();
             if (!string.IsNullOrEmpty(carParams.Warehouse))
@@ -60,7 +60,7 @@ namespace CarGarageBackEnd.Data
             {
                 cars = cars.OrderByDescending(p => p.Price);
             }
-            return await PagedList<Vehicle>.CreateAsync(cars, carParams.PageNumber, carParams.PageSize);
+            return  PagedList<Vehicle>.CreateAsync(cars, carParams.PageNumber, carParams.PageSize);
 
         }
 

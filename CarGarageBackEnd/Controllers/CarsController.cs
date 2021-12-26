@@ -17,25 +17,23 @@ namespace CarGarageBackEnd.Controllers
     {
         private readonly ICarGarageRepo _repo;
         private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
-        public CarsController(ICarGarageRepo repo, IMapper mapper, UserManager<User> userManager)
+        public CarsController(ICarGarageRepo repo, IMapper mapper)
         {
             _mapper = mapper;
             _repo = repo;
-            _userManager = userManager;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCars([FromQuery] CarParams carsParams)
+        public  IActionResult GetCars([FromQuery] CarParams carsParams)
         {
-            var cars = await _repo.GetCars(carsParams);
-            var propertiesForReturn = _mapper.Map<IEnumerable<CarForListDto>>(cars);
+            var cars =  _repo.GetCars(carsParams);
+            var carsForReturn = _mapper.Map<IEnumerable<CarForListDto>>(cars);
             Response.AddPagination(cars.CurrentPage, cars.PageSize, cars.TotalCount, cars.TotalPages);
-            return Ok(propertiesForReturn);
+            return Ok(carsForReturn);
         }
 
         [HttpGet("{id}", Name = "GetCar")]
-        public async Task<IActionResult> GetProperty(int id)
+        public async Task<IActionResult> GetCar(int id)
         {
             var carFromRepo = await _repo.GetCar(id);
             if (carFromRepo == null)
