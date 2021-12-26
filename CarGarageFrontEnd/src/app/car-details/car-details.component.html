@@ -1,0 +1,63 @@
+<div class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a [routerLink]="['/']"> <i class="fa fa-home"></i> </a></li>
+          <li class="breadcrumb-item active"> <i class="fa fa-chevron-right"></i> <span>Car Details
+              {{car.vehicleId}}</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="space-ptb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0 order-lg-2">
+        <div class="sticky-top">
+          <div class="mb-4">
+            <h3>{{car.make}}</h3>
+            <h4>{{car.model}} / {{car.yearModel}}</h4>
+            <span class="d-block mb-3"><i class="fa fa-map-marker fa-xs pr-2"></i>{{car.carLocation}}
+            </span>
+            <span class="price font-xll text-primary d-block">{{car.price | currency:'EUR'}}</span>
+            <ul class="property-detail-meta list-unstyled ">
+              <li><a href="#"> <i class="fa fa-shopping-cart"></i> </a></li>
+              <li><a href="#"> <i class="fa fa-print"></i> </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 order-lg-1">
+        <div class="property-detail-img popup-gallery">
+
+
+
+          <div class="owl-carousel" data-animateOut="fadeOut" data-nav-arrow="true" data-items="1" data-md-items="1"
+            data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0">
+            <div class="item">
+              <a class="portfolio-img" href="{{car.mainPhotoUrl || '../../assets/car.png'}}"><img class="img-fluid"
+                  src="{{car.mainPhotoUrl || '../../assets/car.png'}}" alt=""></a>
+            </div>
+          </div>
+        </div>
+        <div class="property-address">
+          <div class="row">
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <h5>{{car.warehouseName}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="property-address">
+          <div class="row">
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <h5>Map</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

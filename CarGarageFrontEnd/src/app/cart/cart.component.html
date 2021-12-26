@@ -1,0 +1,24 @@
+<section class="space-ptb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6" *ngIf="cars.length > 0">
+        <h3>Your cart items</h3>
+        <div class="row mt-4">
+          <div class="col-md-12" *ngFor="let car of cars">
+            <app-car-card (removed)="reloadFromCart($event)" [car]="car.item"></app-car-card>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" *ngIf="cars.length > 0">
+        <h4 class="text-primary">Total Price: {{cartService.getTotalPrice() | currency:'EUR'}}</h4>
+        <button class="btn btn-lg btn-primary">Send Request</button>
+      </div>
+      <div class="col-lg-12" *ngIf="cars.length == 0">
+        <h3>Your cart</h3>
+        <h6 class="my-5 text-center">
+          Your Cart is empty
+        </h6>
+      </div>
+    </div>
+  </div>
+</section>

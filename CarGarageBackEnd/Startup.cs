@@ -40,6 +40,7 @@ namespace CarGarageBackEnd
 
             services.AddDbContext<DataContext>(option =>
             {
+                option.UseLazyLoadingProxies();
                 option.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
             });
 
@@ -93,7 +94,7 @@ namespace CarGarageBackEnd
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-       
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -113,12 +114,12 @@ namespace CarGarageBackEnd
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("Index","Fallback");
+                // endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

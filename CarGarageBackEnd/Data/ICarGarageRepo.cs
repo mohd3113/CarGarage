@@ -9,7 +9,9 @@ namespace CarGarageBackEnd.Data
         void Delete<T>(T entity) where T : class;
         Task<bool> SavaAll();
 
-         Task<PagedList<Car>> GetCars(CarParams carParams);
+         Task<PagedList<Vehicle>> GetCars(CarParams carParams);
+
+         Task<Vehicle> GetCar(int id);
 
     }
 }

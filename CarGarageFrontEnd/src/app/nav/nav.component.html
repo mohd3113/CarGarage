@@ -3,7 +3,7 @@
         <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
             [attr.aria-expanded]="!isCollapsed" data-target=".navbar-collapse"><i class="fa fa-align-left"></i></button>
         <a class="navbar-brand" href="index.html">
-           <h2 style="color:#00ff9d;">Car Garage</h2>
+            <h2 style="color:#00ff9d;">Car Garage</h2>
         </a>
         <!-- <div class="d-lg-none envelop" style="float:right;" *ngIf="loggedIn()" dropdown>
             <a id="button-basic2" dropdownToggle class="nav-link" id="navbarDropdown2" aria-controls="dropdown-basic2">
@@ -20,19 +20,18 @@
         </div> -->
         <div class="navbar-collapse collapse justify-content-center" [collapse]="isCollapsed" [isAnimated]="true">
             <ul class="nav navbar-nav">
-                <li class="nav-item d-lg-none" *ngIf="loggedIn()" dropdown>
-                    <a id="button-basic" dropdownToggle class="nav-link" id="navbarDropdown"
-                        aria-controls="dropdown-basic">
-                        <img src="{{photoUrl || '../../assets/user.png'}}" class="userImage rounded-circle">
-                        <i class="fa fa-chevron-down fa-xs"></i>
-                    </a>
+                <li class="nav-item d-lg-none" dropdown placement="bottom right">
+                    <button id="button-basic" dropdownToggle class="nav-link" id="navbarDropdown"
+                        aria-controls="dropdown-basic" class="btn btn-primary btn-sm dropdown-toggle">
+                        {{cartItems.length}}
+                        <i class="fa fa-shopping-cart fa-2x"></i>
+                    </button>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
                         aria-labelledby="button-basic">
-                        <li> <a class="dropdown-item" [routerLink]="['/member/edit']"><i
-                                    class="fa fa-user i-nav mr-1"></i>
-                                Admin Page</a></li>
-                        <li> <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out i-nav mr-1"></i>
-                                Logout</a>
+                        <li>
+                            <div class="dropdown-item" *ngFor="let car of cartItems">{{car.item.make}}</div>
+                            <h5 class="text-primary">{{cartService.getTotalPrice() | currency:'EUR'}}</h5>
+                            <button class="btn btn-sm btn-primary" (click)="navigateToCart()">My Cart </button>
                         </li>
                     </ul>
                 </li>
@@ -42,24 +41,24 @@
             </ul>
         </div>
         <div class="login d-none d-lg-block">
-            <div *ngIf="loggedIn()" class="dropdown" dropdown>
+            <div class="dropdown" dropdown>
                 <span class="mr-1">
-                    <a dropdownToggle id="dropdownMenuButton" aria-controls="dropdown-basic">
-                        <img src="{{photoUrl || '../../assets/user.png'}}" class="userImage rounded-circle">
-                    </a>
+                    <button dropdownToggle id="dropdownMenuButton" aria-controls="dropdown-basic" type="button"
+                        class="btn btn-primary btn-sm dropdown-toggle">
+                        {{cartItems.length}}
+                        <i class="fa fa-shopping-cart fa-2x"></i>
+                    </button>
                 </span>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-basic" role="menu"
                     *dropdownMenu>
-                    <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i>Admin Page</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
+                    <div class="dropdown-item" *ngFor="let car of cartItems">{{car.item.make}}
+                        <div class="dropdown-divider">
+                        </div>
+                    </div>
+                    <h5 class="text-primary">{{cartService.getTotalPrice() | currency:'EUR'}}</h5>
+                    <button class="btn btn-sm btn-primary" (click)="navigateToCart()">My Cart</button>
                 </div>
             </div>
-            <form class="form-inline my-2 my-lg-0" *ngIf="!loggedIn()">
-                <a class="text text-primary" [routerLink]="['/login']">
-                    <img src="../../assets/user.png" class="userImage rounded-circle">
-                </a>
-            </form>
         </div>
     </div>
 </nav>

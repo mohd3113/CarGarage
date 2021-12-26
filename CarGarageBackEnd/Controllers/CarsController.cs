@@ -28,14 +28,22 @@ namespace CarGarageBackEnd.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCars([FromQuery] CarParams carsParams)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-            var properties = await _repo.GetCars(carsParams);
-
-            var propertiesForReturn = _mapper.Map<IEnumerable<CarForListDto>>(properties);
-
-            Response.AddPagination(properties.CurrentPage, properties.PageSize, properties.TotalCount, properties.TotalPages);
+            var cars = await _repo.GetCars(carsParams);
+            var propertiesForReturn = _mapper.Map<IEnumerable<CarForListDto>>(cars);
+            Response.AddPagination(cars.CurrentPage, cars.PageSize, cars.TotalCount, cars.TotalPages);
             return Ok(propertiesForReturn);
+        }
+
+        [HttpGet("{id}", Name = "GetCar")]
+        public async Task<IActionResult> GetProperty(int id)
+        {
+            var carFromRepo = await _repo.GetCar(id);
+            if (carFromRepo == null)
+            {
+                return NotFound();
+            }
+            var propertyForDetailsDto = _mapper.Map<CarForListDto>(carFromRepo);
+            return Ok(propertyForDetailsDto);
         }
     }
 }

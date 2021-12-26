@@ -1,3 +1,123 @@
-<p>
-  Home works!
-</p>
+<div class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a [routerLink]="['/']"> <i class="fa fa-home"></i> </a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="space-ptb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="section-title mb-3 mb-lg-4">
+          <h2><span class="text-primary">{{cars.length}}</span> Results</h2>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="property-filter-tag">
+          <ul class="list-unstyled">
+            <li><a class="filter-clear" (click)="resetFilters()">Reset Search <i class="fa fa-refresh"></i> </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 mb-5 mb-lg-0">
+        <div class="sidebar">
+          <div class="widget">
+            <div class="widget-title widget-collapse">
+              <h6>Advanced filter</h6>
+              <a class="ml-auto" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                aria-controls="filter-property"> <i class="fa fa-chevron-down"></i> </a>
+            </div>
+            <div [collapse]="isCollapsed" [isAnimated]="true" id="filter-property">
+              <form class="mt-3" #form="ngForm" (ngSubmit)="loadCars()" novalidate>
+                <div class="input-group mb-2 select-border">
+                  <select class="form-control basic-select" [(ngModel)]="carParams.warehouse" name="carParams">
+                    <option value="" selected>All Warehouse</option>
+                  </select>
+                </div>    
+                <div class="input-group mb-2 select-border">
+                  <select class="form-control basic-select" [(ngModel)]="carParams.model" name="carParams">
+                    <option value="" selected>All Model</option>
+                  </select>
+                </div>    
+              
+                <div class="form-group property-price-slider mt-3">
+                  <input type="number" class="form-control" placeholder="Max Price" [(ngModel)]="carParams.price"
+                    name="price" />
+                </div>
+             
+                <div class="input-group mb-2">
+                  <button class="btn btn-primary btn-block align-items-center" type="submit"><i
+                      class="fa fa-filter mr-1"></i><span>Filter</span></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="property-filter d-sm-flex">
+          <ul class="property-short list-unstyled d-sm-flex mb-0">
+            <li>
+              <form class="form-inline">
+                <div class="form-group d-lg-flex d-block">
+                  <label class="justify-content-start">Short by:</label>
+                  <div class="short-by">
+                    <select class="form-control basic-select" [(ngModel)]="carParams.orderBy"
+                      (change)="loadCars()" name="orderBy">
+                      <option value="DNTO">Date New to Old</option>
+                      <option value="DOTN">Date Old to New</option>
+                      <option value="PLTH">Price Low to High</option>
+                      <option value="PHTL">Price High to Low</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </li>
+          </ul>
+          <ul class="property-view-list list-unstyled d-flex mb-0">
+            <li>
+              <form class="form-inline">
+                <div class="form-group d-lg-flex d-block">
+                  <label class="justify-content-start pr-2">Sort by: </label>
+                  <div class="short-by">
+                    <select class="form-control basic-select" [(ngModel)]="pagination.itemsPerPage"
+                      (change)="loadCars()" name="itemsPerPage">
+                      <option value="10">10</option>
+                      <option value="20">20 </option>
+                      <option value="30">30 </option>
+                      <option value="40">40 </option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="row mt-4">
+          <div class="col-sm-6" *ngFor="let car of cars">
+            <app-car-card [car]="car"></app-car-card>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex justify-content-center">
+              <pagination [boundaryLinks]="true" [(ngModel)]="pagination.currentPage"
+                [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+                (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                lastText="&raquo;">
+              </pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

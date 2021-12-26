@@ -1,5 +1,6 @@
 using CarGarageBackEnd.Helpers;
 using CarGarageBackEnd.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarGarageBackEnd.Data
 {
@@ -20,11 +21,47 @@ namespace CarGarageBackEnd.Data
             _context.Remove(entity);
         }
 
-        public async Task<PagedList<Car>> GetCars(CarParams carParams)
+        public async Task<Vehicle> GetCar(int id)
         {
-            var cars = _context.Cars.AsQueryable();
-             return await PagedList<Car>.CreateAsync(cars, carParams.PageNumber, carParams.PageSize);
-            
+            return await _context.Vehicles.FirstOrDefaultAsync(p => p.VehicleId == id);
+        }
+
+        public async Task<PagedList<Vehicle>> GetCars(CarParams carParams)
+        {
+            var cars = _context.Vehicles.AsQueryable();
+            if (!string.IsNullOrEmpty(carParams.Warehouse))
+            {
+                cars = _context.Vehicles.Where(p => p.Car.Warehouse.Name == carParams.Warehouse);
+            }
+            if (!string.IsNullOrEmpty(carParams.Model))
+            {
+                cars = _context.Vehicles.Where(p => p.Model == carParams.Model);
+            }
+            if (carParams.Price != null)
+            {
+                if (carParams.Price != 0)
+                {
+                    cars = _context.Vehicles.Where(p => p.Price <= carParams.Price);
+                }
+            }
+            if (carParams.OrderBy == "DNTO")
+            {
+                cars = cars.OrderByDescending(p => p.DateAdded);
+            }
+            if (carParams.OrderBy == "DOTN")
+            {
+                cars = cars.OrderBy(p => p.DateAdded);
+            }
+            if (carParams.OrderBy == "PLTH")
+            {
+                cars = cars.OrderBy(p => p.Price);
+            }
+            if (carParams.OrderBy == "PHTL")
+            {
+                cars = cars.OrderByDescending(p => p.Price);
+            }
+            return await PagedList<Vehicle>.CreateAsync(cars, carParams.PageNumber, carParams.PageSize);
+
         }
 
         public async Task<bool> SavaAll()

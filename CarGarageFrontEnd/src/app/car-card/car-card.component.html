@@ -1,0 +1,29 @@
+<div class="property-item">
+  <div class="property-image">
+    <img class="img-fluid pro-img" src="{{car.mainPhotoUrl || '../../assets/car.png'}}" alt="">
+    <div class="property-lable">
+      <span class="badge badge-md badge-primary">{{car.make}}</span>
+    </div>
+  </div>
+  <br>
+  <div class="property-details">
+    <div class="property-details-inner">
+      <h5 class="property-title"><a href="property-detail-style-01.html">{{car.model}} / {{car.yearModel}}</a> <span
+          class="float-right">{{car.price | currency:'EUR'}}</span></h5>
+      <span class="property-address"><i class="fa fa-map-marker"></i> {{car.carLocation}}</span>
+      <span class="property-agent-date float-right"><i class="fa fa-clock-o"></i> {{car.dateAdded | date:
+        'dd.MM.yyyy'}}</span>
+
+    </div>
+    <div class="property-btn">
+      <a class="property-link" [routerLink]="['/cars/',car.vehicleId]">See Details</a>
+      <ul class="property-listing-actions list-unstyled mb-0">
+        <li class="list-inline-item" *ngIf="!car.isAdded"><button class="btn btn-light btn-sm" (click)="addToCart()"><i
+              class="fa fa-cart-plus fa-2x"></i></button>
+        </li>
+        <li class="list-inline-item" *ngIf="car.isAdded"><button class="btn btn-light btn-sm" style="color:#00ff9d;"
+            (click)="removeCart()"><i class="fa fa-cart-arrow-down fa-2x"></i></button></li>
+      </ul>
+    </div>
+  </div>
+</div>
