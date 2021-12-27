@@ -72,5 +72,15 @@ namespace CarGarageBackEnd.Tests
         {
             throw new NotImplementedException();
         }
+
+        public Task<List<Request>> GetRequests()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Request> GetRequest(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
