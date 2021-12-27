@@ -69,6 +69,16 @@ namespace CarGarageBackEnd.Data
 
         }
 
+        public async Task<Request> GetRequest(int id)
+        {
+            return await _context.Requests.FirstOrDefaultAsync(p => p.RequestId == id);
+        }
+
+        public async Task<List<Request>> GetRequests()
+        {
+            return await _context.Requests.OrderByDescending(p => p.RequestDate).ToListAsync();
+        }
+
         public async Task<bool> SavaAll()
         {
             return await _context.SaveChangesAsync() > 0;

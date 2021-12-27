@@ -11,5 +11,7 @@ namespace CarGarageBackEnd.Models
         public DateTime DateAdded { get; set; }
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
+
+        public virtual ICollection<RequestVehicle> RequestVihicles { get; set; }
     }
 }
