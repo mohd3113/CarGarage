@@ -19,7 +19,7 @@ export class CarListResolver implements Resolve<Car[]>{
         return this.carService.getCars(this.pageNumber, this.pageSize).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');
-                this.router.navigate(['/']);
+                this.router.navigate(['/errors']);
                 return of(null);
             })
         );

@@ -15,7 +15,7 @@ export class CarDetailsResolver implements Resolve<Car>{
         return this.carService.getCar(route.params['id']).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');
-                this.router.navigate(['/']);
+                this.router.navigate(['/errors']);
                 return of(null);
             })
         );

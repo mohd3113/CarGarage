@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -27,7 +27,7 @@ import { ErrorsComponent } from './errors/errors.component';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -36,8 +36,8 @@ import { ErrorsComponent } from './errors/errors.component';
     CarDetailsComponent,
     CarCardComponent,
     CartComponent,
-      ErrorsComponent
-   ],
+    ErrorsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
