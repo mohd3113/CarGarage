@@ -18,8 +18,8 @@ export class CarListResolver implements Resolve<Car[]>{
     resolve(route: ActivatedRouteSnapshot): Observable<Car[]> {
         return this.carService.getCars(this.pageNumber, this.pageSize).pipe(
             catchError(error => {
-                this.alertify.error('Problem retriveing data');
-                this.router.navigate(['/home']);
+                this.alertify.error('Problem retrieving data');
+                this.router.navigate(['/']);
                 return of(null);
             })
         );
