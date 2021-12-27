@@ -1,18 +1,24 @@
-How to Run the Application
 
 
-1) First Way: Easy way :)
+Application Pre Requirements
+
+1) .Net Core 6.0
+2) Angular CLI: 11.2.3
+
+
+Application Running Methods.
+
+1) First Method: Easy Way :)
 
 Open the running application from the following link:
 http://mohd31132-001-site5.btempurl.com/
 
 
-2) Hard Way 
+2) Second Method : Long Way
 
 a) Clone the current repo from GitHub.
 
 (Back-End)
-
 a) Set the SQL Server Connection String in 'appsettings.Development.json' and 'appsettings.json' files.
 b) Navigate to 'CarGarageBackEnd' Folder in CMD
 c) run the command -> dotnet restore
