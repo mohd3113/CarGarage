@@ -27,7 +27,9 @@ export class CarDetailsComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.car = data['car'];
     });
-    debugger;
+    if (this.cartService.cars.find(e => e.item.vehicleId == this.car.vehicleId)) {
+      this.car.isAdded = true;
+    }
     this.renderMap();
   }
 
