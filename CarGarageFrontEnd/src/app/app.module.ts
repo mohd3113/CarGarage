@@ -23,10 +23,11 @@ import { CarDetailsResolver } from './_resolvers/car-details.resolver';
 import { CartComponent } from './cart/cart.component';
 import { ShoppingCartService } from './_services/shopping-cart.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ErrorsComponent } from './errors/errors.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -35,7 +36,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     CarDetailsComponent,
     CarCardComponent,
     CartComponent,
-  ],
+      ErrorsComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
