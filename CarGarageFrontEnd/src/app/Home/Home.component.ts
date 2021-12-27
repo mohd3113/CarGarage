@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.carParams.warehouse = '';
     this.carParams.model = '';
     this.carParams.price = '';
+    this.carParams.licensed = true;
     this.carParams.orderBy = 'DNTO';
     this.route.queryParams.subscribe((params) => {
       if (params['searchKey']) {
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
     this.carParams.warehouse = '';
     this.carParams.model = '';
     this.carParams.price = '';
+    this.carParams.licensed = true;
     this.carParams.orderBy = 'DNTO';
     this.loadCars();
   }

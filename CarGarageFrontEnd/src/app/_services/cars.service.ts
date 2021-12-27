@@ -28,7 +28,7 @@ export class CarsService {
       params = params.append('model', carParams.model);
       params = params.append('price', carParams.price);
       params = params.append('orderBy', carParams.orderBy);
-
+      params = params.append('licensed', carParams.licensed);
     }
     return this.http.get<Car[]>(this.baseUrl + 'Cars', { observe: 'response', params }).pipe(
       map((response) => {

@@ -26,9 +26,9 @@ namespace CarGarageBackEnd.Data
             return await _context.Vehicles.FirstOrDefaultAsync(p => p.VehicleId == id);
         }
 
-        public  PagedList<Vehicle> GetCars(CarParams carParams)
+        public PagedList<Vehicle> GetCars(CarParams carParams)
         {
-            var cars = _context.Vehicles.AsQueryable();
+            var cars = _context.Vehicles.Where(p => p.Licensed == carParams.Licensed).AsQueryable();
             if (!string.IsNullOrEmpty(carParams.Warehouse))
             {
                 cars = _context.Vehicles.Where(p => p.Car.Warehouse.Name == carParams.Warehouse);
@@ -60,7 +60,7 @@ namespace CarGarageBackEnd.Data
             {
                 cars = cars.OrderByDescending(p => p.Price);
             }
-            return  PagedList<Vehicle>.CreateAsync(cars, carParams.PageNumber, carParams.PageSize);
+            return PagedList<Vehicle>.CreateAsync(cars, carParams.PageNumber, carParams.PageSize);
 
         }
 

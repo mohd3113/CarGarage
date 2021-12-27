@@ -13,7 +13,9 @@ namespace CarGarageBackEnd.Helpers
 
         public decimal? Price { get; set; }
 
-          public string OrderBy { get; set; }
+        public string OrderBy { get; set; }
+
+        public bool Licensed { get; set; } = true;
         public int PageSize
         {
             get { return pageSize; }
