@@ -50,7 +50,7 @@ namespace CarGarageBackEnd.Tests
 
         public PagedList<Vehicle> GetCars(CarParams carParams)
         {
-            return  PagedList<Vehicle>.CreateAsync(_cars.AsQueryable(), carParams.PageNumber, carParams.PageSize);
+            return  PagedList<Vehicle>.CreateAsync(_cars, carParams.PageNumber, carParams.PageSize);
         }
 
         Task<Vehicle> ICarGarageRepo.GetCar(int id)
@@ -68,5 +68,9 @@ namespace CarGarageBackEnd.Tests
             throw new NotImplementedException();
         }
 
+        public Task<List<string>> GetCarMake()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

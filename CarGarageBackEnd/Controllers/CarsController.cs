@@ -24,9 +24,9 @@ namespace CarGarageBackEnd.Controllers
         }
 
         [HttpGet]
-        public  IActionResult GetCars([FromQuery] CarParams carsParams)
+        public IActionResult GetCars([FromQuery] CarParams carsParams)
         {
-            var cars =  _repo.GetCars(carsParams);
+            var cars = _repo.GetCars(carsParams);
             var carsForReturn = _mapper.Map<IEnumerable<CarForListDto>>(cars);
             Response.AddPagination(cars.CurrentPage, cars.PageSize, cars.TotalCount, cars.TotalPages);
             return Ok(carsForReturn);
@@ -42,6 +42,13 @@ namespace CarGarageBackEnd.Controllers
             }
             var propertyForDetailsDto = _mapper.Map<CarForListDto>(carFromRepo);
             return Ok(propertyForDetailsDto);
+        }
+
+        [HttpGet("GetCarMake")]
+        public async Task<IActionResult> GetCarMake()
+        {
+            var makeFromRepo = await _repo.GetCarMake();
+            return Ok(makeFromRepo);
         }
     }
 }

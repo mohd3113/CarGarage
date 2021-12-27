@@ -40,16 +40,16 @@
                 <div class="input-group mb-2 select-border">
                   <select class="form-control basic-select" [(ngModel)]="carParams.warehouse" name="carParams">
                     <option value="" selected>All Warehouse</option>
-                    <option value="Warehouse A" selected>Warehouse A</option>
-                    <option value="Warehouse A" selected>Warehouse B</option>
-                    <option value="Warehouse A" selected>Warehouse C</option>
-                    <option value="Warehouse A" selected>Warehouse D</option>
+                    <option value="Warehouse A">Warehouse A</option>
+                    <option value="Warehouse B">Warehouse B</option>
+                    <option value="Warehouse C">Warehouse C</option>
+                    <option value="Warehouse D">Warehouse D</option>
                   </select>
                 </div>
                 <div class="input-group mb-2 select-border">
                   <select class="form-control basic-select" [(ngModel)]="carParams.model" name="carParams">
-                    <option value="" selected>All Model</option>
-                    <option value="" selected>All Model</option>
+                    <option value="" selected>Make</option>
+                    <option *ngFor="let make of makes" value="{{make}}">{{make}}</option>
                   </select>
                 </div>
                 <div class="form-group property-price-slider mt-3">

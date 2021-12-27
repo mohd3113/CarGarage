@@ -26,6 +26,7 @@ export class CarsService {
 
     if (carParams != null) {
       params = params.append('model', carParams.model);
+      params = params.append('warehouse', carParams.warehouse);
       params = params.append('price', carParams.price);
       params = params.append('orderBy', carParams.orderBy);
       params = params.append('licensed', carParams.licensed);
@@ -43,6 +44,9 @@ export class CarsService {
 
   getCar(id): Observable<Car> {
     return this.http.get<Car>(this.baseUrl + 'cars/' + id);
+  }
+  getCarMake(): Observable<string[]> {
+    return this.http.get<string[]>(this.baseUrl + 'cars/GetCarMake');
   }
 
 }

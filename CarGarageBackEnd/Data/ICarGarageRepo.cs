@@ -13,5 +13,7 @@ namespace CarGarageBackEnd.Data
 
         Task<Vehicle> GetCar(int id);
 
+        Task<List<string>> GetCarMake();
+
     }
 }

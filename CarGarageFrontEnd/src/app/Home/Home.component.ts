@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   pagination: Pagination;
   carParams: any = {};
   isCollapsed = false;
+  makes: string[];
   constructor(private carService: CarsService, private alertify: AlertifyService,
     private route: ActivatedRoute, private router: Router) { }
 
@@ -29,6 +30,9 @@ export class HomeComponent implements OnInit {
       this.cars = data['cars'].result;
       this.pagination = data['cars'].pagination;
     });
+    this.carService.getCarMake().subscribe((res: string[]) => {
+      this.makes = res;
+    });
     this.carParams.warehouse = '';
     this.carParams.model = '';
     this.carParams.price = '';
@@ -41,6 +45,8 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+
   resetFilters() {
     this.carParams.warehouse = '';
     this.carParams.model = '';

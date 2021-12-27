@@ -119,7 +119,7 @@ namespace CarGarageBackEnd
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                // endpoints.MapFallbackToController("Index","Fallback");
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

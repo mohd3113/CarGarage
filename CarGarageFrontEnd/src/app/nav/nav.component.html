@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
             [attr.aria-expanded]="!isCollapsed" data-target=".navbar-collapse"><i class="fa fa-align-left"></i></button>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" [routerLink]="['/']">
             <h2 style="color:#00ff9d;">Car Garage</h2>
         </a>
         <!-- <div class="d-lg-none envelop" style="float:right;" *ngIf="loggedIn()" dropdown>

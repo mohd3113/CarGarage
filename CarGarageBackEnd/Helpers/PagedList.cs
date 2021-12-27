@@ -24,7 +24,7 @@ namespace CarGarageBackEnd.Helpers
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             this.AddRange(items);
         }
-        public static PagedList<T> CreateAsync(IQueryable<T> source, int pageNumber, int pageSize)
+        public static PagedList<T> CreateAsync(List<T> source, int pageNumber, int pageSize)
         {
             var count = source.Count();
             var items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
