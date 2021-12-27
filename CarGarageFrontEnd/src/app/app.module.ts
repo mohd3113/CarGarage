@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -23,6 +23,7 @@ import { CarDetailsResolver } from './_resolvers/car-details.resolver';
 import { CartComponent } from './cart/cart.component';
 import { ShoppingCartService } from './_services/shopping-cart.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 
 @NgModule({
   declarations: [

@@ -29,20 +29,15 @@ public class CarControllerTest
     [Fact]
     public void ReturnsOkResult()
     {
-        // Act
         var okResult = _controller.GetCars(new CarParams());
-        // Assert
         Assert.IsType<OkObjectResult>(okResult as OkObjectResult);
     }
 
     [Fact]
     public void GetAllCarsTest()
     {
-        // Act
         var okResult = _controller.GetCars(new CarParams()) as OkObjectResult;
-        // Assert
         var items = Assert.IsType<List<CarForListDto>>(okResult.Value);
-
         Assert.Equal(2, items.Count);
     }
 }

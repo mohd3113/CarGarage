@@ -29,14 +29,18 @@
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
                         aria-labelledby="button-basic">
                         <li>
-                            <div class="dropdown-item" *ngFor="let car of cartItems">{{car.item.make}}</div>
-                            <h5 class="text-primary">{{cartService.getTotalPrice() | currency:'EUR'}}</h5>
+                            <div class="dropdown-item" *ngFor="let car of cartItems">
+                                <span>{{car.item.make}}</span><br>
+                                <span>{{car.item.model}} / {{car.item.yearModel}}</span><br>
+                                <span class="text-primary">{{car.item.price | currency:'EUR'}}</span>
+                            </div>
+                            <h5 class="text-primary">Total: {{cartService.getTotalPrice() | currency:'EUR'}}</h5>
                             <button class="btn btn-sm btn-primary" (click)="navigateToCart()">My Cart </button>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']"><b>Cars</b></a>
+                    <a class="nav-link" [routerLink]="['/']"><b>Cars</b></a>
                 </li>
             </ul>
         </div>
@@ -51,11 +55,13 @@
                 </span>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-basic" role="menu"
                     *dropdownMenu>
-                    <div class="dropdown-item" *ngFor="let car of cartItems">{{car.item.make}}
-                        <div class="dropdown-divider">
-                        </div>
+                    <div class="dropdown-item" *ngFor="let car of cartItems">
+                        <span>{{car.item.make}}</span><br>
+                        <span>{{car.item.model}} / {{car.item.yearModel}}</span><br>
+                        <span class="text-primary">{{car.item.price | currency:'EUR'}}</span>
+                        <div class="dropdown-divider"></div>
                     </div>
-                    <h5 class="text-primary">{{cartService.getTotalPrice() | currency:'EUR'}}</h5>
+                    <h5 class="text-primary">Total: {{cartService.getTotalPrice() | currency:'EUR'}}</h5>
                     <button class="btn btn-sm btn-primary" (click)="navigateToCart()">My Cart</button>
                 </div>
             </div>
