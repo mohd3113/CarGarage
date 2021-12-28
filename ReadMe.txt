@@ -45,4 +45,9 @@ If you get ERR_CERT_AUTHORITY_INVALID (Problem retrieving data) error in the bro
 5) run the command -> ng serve
 6) open broser on localhost:4200
 
+
+You can access Admin Page from "/Login" 
+Username : Admin
+Password: password
+
 Enjoy ;)
