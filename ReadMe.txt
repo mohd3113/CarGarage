@@ -46,7 +46,7 @@ If you get ERR_CERT_AUTHORITY_INVALID (Problem retrieving data) error in the bro
 6) open broser on localhost:4200
 
 
-You can access Admin Page from "/Login" 
+You can access Admin Page from "/login" 
 Username : Admin
 Password: password
 
