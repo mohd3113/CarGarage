@@ -1,0 +1,30 @@
+<section class="space-ptb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Login</h3>
+        <form  #loginForm="ngForm" class="my-2 my-lg-0" (ngSubmit)="login()">
+          <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" type="text" placeholder="Username" name="username" required
+              [(ngModel)]="model.username" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input class="form-control input-sm mr-sm-2" type="password" placeholder="Password" name="password" required
+              [(ngModel)]="model.password" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success mr-2" type="submit" [disabled]="!loginForm.valid">
+              Login
+            </button>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-md-6 d-none d-sm-none d-md-block">
+        <img src="../../assets/login.png" class="img-responsive w-100">
+      </div>
+    </div>
+  </div>
+</section>

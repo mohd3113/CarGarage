@@ -1,3 +1,5 @@
+using CarGarageBackEnd.Models;
+
 namespace CarGarageBackEnd.Dtos
 {
     public class RequestToAddDto
@@ -10,6 +12,15 @@ namespace CarGarageBackEnd.Dtos
 
         public string FromMobilePhone { get; set; }
 
-        public List<int> VihiclesIds { get; set; }
+        public DateTime RequestDate { get; set; }
+
+        public List<int> VehiclesIds { get; set; }
+
+        public RequestToAddDto()
+        {
+            RequestDate = DateTime.Now;
+        }
+
+
     }
 }

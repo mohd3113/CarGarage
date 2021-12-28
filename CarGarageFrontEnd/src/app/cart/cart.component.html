@@ -11,7 +11,31 @@
       </div>
       <div class="col-md-6" *ngIf="cars.length > 0">
         <h4 class="text-primary">Total Price: {{cartService.getTotalPrice() | currency:'EUR'}}</h4>
-        <button class="btn btn-lg btn-primary">Send Request</button>
+        <form  #loginForm="ngForm" class="my-2 my-lg-0" (ngSubmit)="SendRequest()" *ngIf="!isSent">
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" placeholder="Name" name="fromName" required
+              [(ngModel)]="model.fromName" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control input-sm mr-sm-2" type="email" placeholder="Email" name="fromEmail" required
+              [(ngModel)]="model.fromEmail" />
+          </div>
+          <div class="form-group">
+            <label>Mobile Phone</label>
+            <input class="form-control" type="text" placeholder="Mobile Phone" name="fromMobilePhone" required
+              [(ngModel)]="model.fromMobilePhone" />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control input-sm mr-sm-2" type="text" placeholder="Address" name="fromAddress" required
+              [(ngModel)]="model.fromAddress" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary" class="btn btn-success mr-2" type="submit" [disabled]="!loginForm.valid">Send Request</button>
+          </div>
+        </form>
       </div>
       <div class="col-lg-12" *ngIf="cars.length == 0">
         <h3>Your cart</h3>

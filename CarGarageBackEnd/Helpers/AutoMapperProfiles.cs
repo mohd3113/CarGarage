@@ -18,6 +18,19 @@ namespace CarGarageBackEnd.Helpers
             .ForMember(m => m.WarehouseName, opt => opt.MapFrom(u => u.Car.Warehouse.Name))
             .ForMember(m => m.Lat, opt => opt.MapFrom(u => u.Car.Warehouse.Location.Lat))
             .ForMember(m => m.Long, opt => opt.MapFrom(u => u.Car.Warehouse.Location.Long));
+
+            CreateMap<Request, RequestForListDto>()
+             .ForMember(m => m.Total, opt => opt.MapFrom(u => u.RequestVihicles.Sum(c => c.Vehicle.Price)));
+
+            CreateMap<RequestForListDto, Request>();
+
+            CreateMap<Request, RequestToAddDto>().ReverseMap();
+
+            CreateMap<Request, RequestForDetailsDto>()
+            .ForMember(m => m.Vehicles, opt => opt.MapFrom(u => u.RequestVihicles.Select(p => p.Vehicle).ToList()));
+
+            CreateMap<RequestForDetailsDto, Request>();
+
         }
     }
 }

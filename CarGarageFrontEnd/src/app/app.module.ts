@@ -24,10 +24,15 @@ import { CartComponent } from './cart/cart.component';
 import { ShoppingCartService } from './_services/shopping-cart.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ErrorsComponent } from './errors/errors.component';
-
+import { RequestService } from './_services/request.service';
+import { RequestListResolver } from './_resolvers/request-list.resolver';
+import { RequestDetailsResolver } from './_resolvers/request-details';
+import { RequestListComponent } from './request-list/request-list.component';
+import { RequestDetailsComponent } from './request-details/request-details.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [
+  declarations: [			
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -36,8 +41,11 @@ import { ErrorsComponent } from './errors/errors.component';
     CarDetailsComponent,
     CarCardComponent,
     CartComponent,
-    ErrorsComponent
-  ],
+    ErrorsComponent,
+      RequestListComponent,
+      RequestDetailsComponent,
+      LoginComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,7 +63,11 @@ import { ErrorsComponent } from './errors/errors.component';
     AlertifyService,
     CarListResolver,
     CarDetailsResolver,
-    ShoppingCartService
+    ShoppingCartService,
+    RequestService,
+    RequestListResolver,
+    RequestDetailsResolver
+
   ],
   bootstrap: [AppComponent]
 })

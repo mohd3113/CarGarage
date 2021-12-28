@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { Car } from '../_models/car';
+import { AlertifyService } from '../_services/alertify.service';
+import { RequestService } from '../_services/request.service';
 import { ShoppingCartService } from '../_services/shopping-cart.service';
 
 @Component({
@@ -8,21 +12,41 @@ import { ShoppingCartService } from '../_services/shopping-cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService:ShoppingCartService) { }
+  constructor(private cartService: ShoppingCartService,
+    private requestService: RequestService,
+    private alertify: AlertifyService,
+    private router: Router
+  ) { }
 
-  cars : any;
-
+  cars: any;
+  isSent: boolean = false;
+  model: any = {};
   ngOnInit() {
     this.cars = this.cartService.cars;
   }
 
-  reloadFromCart(event){
+  reloadFromCart(event) {
     this.cars = this.cartService.cars;
   }
-  // openModal(){
-  //   this.dialog.open(CartModalComponent, {
-  //     width :'80%',
-  //   })
-  // }
 
+  SendRequest() {
+    this.model.vehiclesIds = this.cars.map(a => a.item.vehicleId);
+
+    this.requestService.createRequest(this.model).subscribe(() => {
+      this.alertify.success('Request had been sent successfully');
+      this.isSent = true;
+      this.cars.forEach(({ item }) => {
+        this.removeCart(item)
+      });
+    }, (error) => {
+      this.alertify.error('Error was occured!');
+    }, () => {
+      this.router.navigate(['/']);
+    });
+  }
+
+  removeCart(car) {
+    this.cartService.removeFromCart(car);
+    car.isAdded = false;
+  }
 }

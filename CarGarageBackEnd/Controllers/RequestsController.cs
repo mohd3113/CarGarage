@@ -10,6 +10,7 @@ namespace CarGarageBackEnd.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
+    [AllowAnonymous]
     public class RequestsController : ControllerBase
     {
 
@@ -22,26 +23,26 @@ namespace CarGarageBackEnd.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRequests()
+        public async Task<IActionResult> GetRequests()
         {
-            var requests = _repo.GetRequests();
+            var requests = await _repo.GetRequests();
             var requestsForReturn = _mapper.Map<IEnumerable<RequestForListDto>>(requests);
             return Ok(requestsForReturn);
         }
 
         [HttpPost]
-        public IActionResult AddRequest(RequestToAddDto requestToAddDto)
+        public async Task<IActionResult> AddRequest(RequestToAddDto requestToAddDto)
         {
             Request req = _mapper.Map<Request>(requestToAddDto);
             _repo.Add(req);
-            _repo.SavaAll();
-            foreach (var ve in requestToAddDto.VihiclesIds)
+            await _repo.SavaAll();
+            foreach (var ve in requestToAddDto.VehiclesIds)
             {
                 _repo.Add(new RequestVehicle { RequestId = req.RequestId, VehicleId = ve });
+                 await _repo.SavaAll();
             }
-            _repo.SavaAll();
             var requestForDetailsDto = _mapper.Map<RequestForDetailsDto>(req);
-            return CreatedAtRoute("GetStudent", new { requestId = req.RequestId, }, requestForDetailsDto);
+            return Ok();
         }
 
         [HttpGet("{id}", Name = "GetRequest")]
