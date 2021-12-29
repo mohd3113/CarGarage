@@ -29,11 +29,12 @@ export class NavComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('userId');
     this.authService.decodedToken = null;
-    this.authService.currentUser = null;
     this.alertify.message('logged out');
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
+  
   ngOnInit() {
     this.cartService.carsRef.subscribe((items) => {
       this.cartItems = items;

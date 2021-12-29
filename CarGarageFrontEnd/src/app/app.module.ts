@@ -30,9 +30,10 @@ import { RequestDetailsResolver } from './_resolvers/request-details';
 import { RequestListComponent } from './request-list/request-list.component';
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import { LoginComponent } from './login/login.component';
+import { HasRoleDirective } from './_directives/hasRole.directive';
 
 @NgModule({
-  declarations: [			
+  declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -42,10 +43,11 @@ import { LoginComponent } from './login/login.component';
     CarCardComponent,
     CartComponent,
     ErrorsComponent,
-      RequestListComponent,
-      RequestDetailsComponent,
-      LoginComponent
-   ],
+    RequestListComponent,
+    RequestDetailsComponent,
+    LoginComponent,
+    HasRoleDirective
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

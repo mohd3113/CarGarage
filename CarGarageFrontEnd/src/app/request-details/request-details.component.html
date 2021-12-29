@@ -1,8 +1,84 @@
 <section class="space-ptb">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h2 class="text-primary">Under Implementation.</h2>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Request Details</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label>Name: {{request.fromName}}</label>
+            </div>
+            <div class="form-group">
+              <label>Email {{request.fromEmail}}</label>
+            </div>
+            <div class="form-group">
+              <label>Mobile Phone {{request.fromMobilePhone}}</label>
+
+            </div>
+            <div class="form-group">
+              <label>Address {{request.fromAddress}}</label>
+
+            </div>
+            <div class="form-group">
+              <label>Date {{request.requestDate}}</label>
+            </div>
+            <div class="form-group">
+              <label>Total {{request.total | currency:"EUR"}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Cars List</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped table-bordered" style="width:100%" id="appslists">
+              <thead>
+                <tr>
+                  <th>
+                    Id
+                  </th>
+                  <th>
+                    Make
+                  </th>
+                  <th>
+                    Model
+                  </th>
+                  <th>
+                    Year Model
+                  </th>
+                  <th>
+                    Price
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let car of request.vehicles">
+                  <td>
+                    <a [routerLink]="['/cars/',request.vehicleId]"> {{request.vehicleId}}</a>
+                  </td>
+                  <td>
+                    {{request.make}}
+                  </td>
+                  <td>
+                    {{request.model}}
+                  </td>
+                  <td>
+                    {{request.yearModel}}
+                  </td>
+                  <td>
+                    {{request.price | currency :'EUR'}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

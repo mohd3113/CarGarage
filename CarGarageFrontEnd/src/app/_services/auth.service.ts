@@ -44,13 +44,17 @@ export class AuthService {
 
   roleMatch(allowedRoles: Array<string>): boolean {
     let isMatch = false;
-    const userRoles = this.decodedToken.role as Array<string>;
-    allowedRoles.forEach(element => {
-      if (userRoles.includes(element)) {
-        isMatch = true;
-        return;
-      }
-    });
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      this.decodedToken = this.jwtHelper.decodeToken(token);
+      const userRoles = this.decodedToken.role as Array<string>;
+      allowedRoles.forEach(element => {
+        if (userRoles.includes(element)) {
+          isMatch = true;
+          return;
+        }
+      });
+    }
     return isMatch;
   }
 }
