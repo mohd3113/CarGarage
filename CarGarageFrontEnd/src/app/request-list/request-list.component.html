@@ -48,6 +48,9 @@
                   <td>
                     {{request.total | currency :'EUR'}}
                   </td>
+                  <td>
+                    <a [routerLink]="['/requests/', request.requestId]"> Details</a>
+                  </td>
                 </tr>
               </tbody>
             </table>

@@ -27,7 +27,8 @@ namespace CarGarageBackEnd.Helpers
             CreateMap<Request, RequestToAddDto>().ReverseMap();
 
             CreateMap<Request, RequestForDetailsDto>()
-            .ForMember(m => m.Vehicles, opt => opt.MapFrom(u => u.RequestVihicles.Select(p => p.Vehicle).ToList()));
+            .ForMember(m => m.Vehicles, opt => opt.MapFrom(u => u.RequestVihicles.Select(p => p.Vehicle).ToList()))
+            .ForMember(m => m.Total, opt => opt.MapFrom(u => u.RequestVihicles.Sum(c => c.Vehicle.Price)));
 
             CreateMap<RequestForDetailsDto, Request>();
 
