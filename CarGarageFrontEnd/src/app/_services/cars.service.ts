@@ -31,7 +31,7 @@ export class CarsService {
       params = params.append('orderBy', carParams.orderBy);
       params = params.append('licensed', carParams.licensed);
     }
-    return this.http.get<Car[]>(this.baseUrl + 'Cars', { observe: 'response', params }).pipe(
+    return this.http.get<Car[]>(this.baseUrl + 'cars', { observe: 'response', params }).pipe(
       map((response) => {
         paginatedResult.result = response.body;
         if (response.headers.get('Pagination') != null) {
