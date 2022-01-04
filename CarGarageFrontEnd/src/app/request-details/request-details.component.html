@@ -60,19 +60,19 @@
               <tbody>
                 <tr *ngFor="let car of request.vehicles">
                   <td>
-                    <a [routerLink]="['/cars/',request.vehicleId]"> {{request.vehicleId}}</a>
+                    <a [routerLink]="['/cars/',car.vehicleId]"> {{car.vehicleId}}</a>
                   </td>
                   <td>
-                    {{request.make}}
+                    {{car.make}}
                   </td>
                   <td>
-                    {{request.model}}
+                    {{car.model}}
                   </td>
                   <td>
-                    {{request.yearModel}}
+                    {{car.yearModel}}
                   </td>
                   <td>
-                    {{request.price | currency :'EUR'}}
+                    {{car.price | currency :'EUR'}}
                   </td>
                 </tr>
               </tbody>

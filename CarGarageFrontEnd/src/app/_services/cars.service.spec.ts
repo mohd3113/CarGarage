@@ -1,13 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { CarsService } from './cars.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
-import { ExpandOperator } from 'rxjs/internal/operators/expand';
 import { CARS } from '../data/cars';
-import { PaginatedResult } from '../_models/pagination';
-import { Car } from '../_models/car';
 
 describe('CarService', () => {
   let carsService: CarsService,

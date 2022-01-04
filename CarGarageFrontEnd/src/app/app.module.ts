@@ -31,6 +31,7 @@ import { RequestListComponent } from './request-list/request-list.component';
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import { LoginComponent } from './login/login.component';
 import { HasRoleDirective } from './_directives/hasRole.directive';
+import { CarsService } from './_services/cars.service';
 
 @NgModule({
   declarations: [
@@ -68,8 +69,8 @@ import { HasRoleDirective } from './_directives/hasRole.directive';
     ShoppingCartService,
     RequestService,
     RequestListResolver,
-    RequestDetailsResolver
-
+    RequestDetailsResolver,
+    CarsService
   ],
   bootstrap: [AppComponent]
 })
