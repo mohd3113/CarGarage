@@ -11,7 +11,7 @@ Application Running Methods.
 1) First Method: Easy Way :)
 
 Open the running application from the following link:
-http://mohd31132-001-site5.btempurl.com/
+https://cargaragebackend.azurewebsites.net/
 
 
 2) Second Method : Long Way
